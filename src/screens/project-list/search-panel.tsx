@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { Input, Select } from 'antd';
+import { useEffect } from 'react';
 
 
 export interface User{
@@ -24,29 +25,35 @@ export const SearchPanel = ({users,param,setParam}:SearchPanelProps) => {
     //     console.log('Param changed:', param);
     //     // 这里可以添加其他副作用，例如请求数据
     // }, [param]); // 依赖数组包含 param，当 param 改变时，会执行 useEffect
+    useEffect(() => {
+        console.log(users); // 确保这里能打印出用户数据
+    }, [users]);
+    
 
     return <form >
         <div>
-            <input
+            <Input
                 type="text"
                 value={param.name}
                 onChange={evt => {
-                    console.log('evt:',evt); // 打印事件对象
                     setParam({
                         ...param,
                         name: evt.target.value
                     });
                 }}
             />
-            <select value={param.personId} onChange={evt => setParam({
+            <Select value={param.personId} onChange={(value) => {
+                console.log("Selected personId:", value); // 添加日志检查
+                setParam({
                 ...param,
-                personId:evt.target.value
-                })}>
-                    <option value={''}>负责人</option>
-                    {
-                        users.map(user => <option key={user.id} value={user.id}>{user.name}</option>)
+                personId:value
+                })}}>
+                    <Select.Option value={''}>负责人</Select.Option>
+                    {users.map((user) => (
+                        <Select.Option key={user.id} value={user.id}>{user.name}</Select.Option>
+                        ))
                     }
-                </select>
+                </Select>
         </div>
     </form> 
 }
