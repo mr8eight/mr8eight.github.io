@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table, TableProps } from 'antd';
 import './index' ;
 import {User} from 'screens/project-list/search-panel'
 import dayjs from 'dayjs';
@@ -12,12 +12,15 @@ export interface Project{
         organization:string;
         created:number
     }
-    interface ListProps{
-        list:Project[];
-        users:User[]
+    interface ListProps extends TableProps<Project>{
+        users:User[];
     }
-    export const List = ({users,list}:ListProps) => {
-        return <Table rowKey="id" pagination={false} columns={[
+    export const List = ({users,...props}:ListProps) => {
+        return (
+        <Table 
+        rowKey="id" 
+        pagination={false} 
+        columns={[
             { 
             title:'名称',
             dataIndex:'name',
@@ -48,7 +51,9 @@ export interface Project{
             );
         },
         }
-     ]} dataSource={list}/>
+     ]}{...props}/>
+    )
     };
+
         
 

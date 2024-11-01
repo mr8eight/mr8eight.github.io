@@ -1,8 +1,13 @@
 import React,{ReactNode} from "react";
 import { AuthProvider } from "./auth-context";
+import {QueryClientProvider ,QueryClient} from "react-query"
 
 export const AppProvider = ({children}:{children:ReactNode}) => {
-    return <AuthProvider>
-        {children}
-    </AuthProvider>
-}
+    return (
+        <QueryClientProvider client={new QueryClient()}>
+            <AuthProvider>
+                {children}
+            </AuthProvider>
+        </QueryClientProvider>
+    );
+};
