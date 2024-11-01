@@ -1,25 +1,34 @@
-
+import React from 'react';
 import { Table } from 'antd';
 import './index' ;
 import {User} from 'screens/project-list/search-panel'
+import dayjs from 'dayjs';
 
 export interface Project{
         id:string;
         name:string;
         personId:string;
         pin:string;
-        organization:string
+        organization:string;
+        created:number
     }
     interface ListProps{
         list:Project[];
         users:User[]
     }
     export const List = ({users,list}:ListProps) => {
-        return <Table rowKey="id" pagination={false} columns={[{ 
+        return <Table rowKey="id" pagination={false} columns={[
+            { 
             title:'名称',
             dataIndex:'name',
             sorter:(a,b) => a.name.localeCompare(b.name)
-        },{
+        },
+            { 
+            title:'部门',
+            dataIndex:'organization',
+            
+        },
+        {
             title:'负责人',
             render(value,project){
                 return (
@@ -28,6 +37,18 @@ export interface Project{
                 </span>
             );
         },
-        }]} dataSource={list}/>
+        },
+        {
+            title:'负责人',
+            render(value,project){
+                return (
+                <span>
+                    {project.created? dayjs(project.created).format('YYYY-MM-DD'):'无'}
+                </span>
+            );
+        },
+        }
+     ]} dataSource={list}/>
     };
         
+
