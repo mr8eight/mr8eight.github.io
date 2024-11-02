@@ -1,5 +1,6 @@
 import React from 'react';
-import { Table, TableProps } from 'antd';
+import { Table } from 'antd';
+import type { TableProps } from 'antd/es/table';
 import './index' ;
 import {User} from 'screens/project-list/search-panel'
 import dayjs from 'dayjs';
