@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProjectListScreen } from "screens/project-list"
 import { useAuth } from "context/auth-context"
 import { stderr } from "process";
@@ -9,8 +9,10 @@ import { Button, Dropdown, Menu } from "antd";
 
 export const AuthenticatedApp = () => {
     const {logout,user} =useAuth()
+    const value:any = undefined
     return (
     <Container>
+        {value.notExit}
         <Header between={true}> 
         <HeaderLeft gap={true}>
             <SoftwareLogo width={'18rem'} color={"rgb(38,132,255)"}/>
