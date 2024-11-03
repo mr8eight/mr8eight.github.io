@@ -5,7 +5,6 @@ import { SearchPanel, User } from "./search-panel"
 import { useEffect,useState } from "react"
 import styled from '@emotion/styled';
 import { Typography } from 'antd';
-import { useAsync } from 'utils/use-async';
 import { useProjects } from 'utils/project';
 import { useUsers } from 'utils/user';
 

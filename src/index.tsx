@@ -2,20 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {loadServer,DevTools} from 'jira-dev-tool';
+import { loadServer, DevTools } from 'jira-dev-tool';
 import 'antd/dist/antd.css'; // 导入样式
-import {AppProvider} from 'context'
+import { AppProvider } from 'context';
+import { BrowserRouter as Router } from 'react-router-dom'; // 导入 BrowserRouter
 
-loadServer(()=>ReactDOM.render(
-  <React.StrictMode>
-    <AppProvider>
-      <DevTools/>
-    <App/>
-    </AppProvider>
-  
-  </React.StrictMode>,
-  document.getElementById('root')
-))
+loadServer(() =>
+  ReactDOM.render(
+    <React.StrictMode>
+      <Router> {/* 在这里包裹 Router */}
+        <AppProvider>
+          <DevTools />
+          <App />
+        </AppProvider>
+      </Router>
+    </React.StrictMode>,
+    document.getElementById('root')
+  )
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
