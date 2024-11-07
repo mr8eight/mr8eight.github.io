@@ -47,7 +47,7 @@ export interface Project{
         },
         },
         {
-            title:'负责人',
+            title:'创建时间',
             render(value,project){
                 return (
                 <span>
