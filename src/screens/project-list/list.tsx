@@ -7,9 +7,9 @@ import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 
 export interface Project{
-        id:string;
+        id:number;
         name:string;
-        personId:string;
+        personId:number;
         pin:string;
         organization:string;
         created:number
@@ -27,7 +27,7 @@ export interface Project{
             title:'名称',
             sorter:(a,b) => a.name.localeCompare(b.name),
             render(value,project){
-                return <Link to={project.id}>{project.name}</Link>
+                return <Link to={String(project.id)}>{project.name}</Link>
             }
 
         },
