@@ -4,13 +4,13 @@ import { List, Project } from "./list"
 import { SearchPanel, User } from "./search-panel"
 import { useEffect,useState } from "react"
 import styled from '@emotion/styled';
-import { Typography } from 'antd';
+import { Button, Row, Typography } from 'antd';
 import { useProjects } from 'utils/project';
 import { useUsers } from 'utils/user';
 import { useUrlQueryParam } from 'utils/url';
 import {useProjectsSearchParams} from './util'
 
-export const ProjectListScreen = () => {
+export const ProjectListScreen = (props:{setProjectModalOpen:(isOpen:boolean)=>void}) => {
     useDocumentTitle('项目列表',false)
     const [param,setParam] = useProjectsSearchParams()
     const{isLoading,error,data:list, retry} = useProjects(useDebounce(param,200))
@@ -18,10 +18,20 @@ export const ProjectListScreen = () => {
 
     return (
         <Container> 
-            <h1>项目列表</h1>
+            <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <h1>项目列表</h1>
+                <Button onClick={()=>props.setProjectModalOpen(true)}>创建项目</Button>
+            </Row>
+
             <SearchPanel users={users || []} param={param} setParam={setParam}/>
             {error ? <Typography.Text type={"danger"}>{error.message}</Typography.Text>:null}
-            <List refresh={retry} loading={isLoading} users={users || []} dataSource={list || []}/>
+            <List 
+                refresh={retry} 
+                loading={isLoading} 
+                users={users || []} 
+                dataSource={list || []}
+                setProjectModalOpen={props.setProjectModalOpen}
+                />
         </Container>
     ) 
         

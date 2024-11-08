@@ -34,17 +34,14 @@ export const useAsync = <D>(initialState?: State<D> ,initialConfig?:typeof defau
             data,
             stat: 'success',
             error: null
-        }),[]
-    )
+        }),[])
 
     const setError = useCallback(
         (error:Error) => setState({
             error,
             stat:'error',
             data:null
-        }),[]
-    )
-
+        }),[])
 
     const run = useCallback(
         (promise:Promise<D>,

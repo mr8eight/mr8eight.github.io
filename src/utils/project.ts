@@ -7,6 +7,7 @@ import { useHttp } from "./http";
 export const useProjects = (param?:Partial<Project>) => {
     const client = useHttp()
     const{run,...result} = useAsync<Project[]>()
+
     const fetchProjects = useCallback(
         () => client('projects',{data:cleanObject(param || {})}),[client,param])
     
@@ -14,7 +15,7 @@ export const useProjects = (param?:Partial<Project>) => {
         run(fetchProjects(),{
             retry:fetchProjects
         });
-    },[param]);
+    },[param,run,fetchProjects]);
 
     return result
 }
