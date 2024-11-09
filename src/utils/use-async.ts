@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { stat } from "fs";
+import { useCallback, useReducer, useState } from "react";
 import { useMountedRef } from "utils";
 
 interface State<D>{
@@ -17,31 +18,40 @@ const defaultConfig = {
     throwOnError:false
 }
 
-export const useAsync = <D>(initialState?: State<D> ,initialConfig?:typeof defaultConfig) => {
+const useSafeDispatch = <T>(dispatch:(...args:T[])=>void) => {
+    const mountedRef = useMountedRef()
+    return useCallback((...rags:T[])=>(mountedRef.current? dispatch(...rags):void 0),[dispatch,mountedRef])
+}
+
+export const useAsync = <D>(
+    initialState?: State<D> ,
+    initialConfig?:typeof defaultConfig
+) => {
     const config = {...defaultConfig,initialConfig}
-    const [state ,setState] = useState<State<D>>({
+    const [state ,dispatch] = useReducer((state:State<D>,
+        action:Partial<State<D>>)=>({...state,...action}), {
         ...defaultInitialState,
         ...initialState
     });
     
-    const mountedRef = useMountedRef()
+    const safeDispatch = useSafeDispatch(dispatch);
 
     const [retry,setRetry] = useState(()=>()=>{
     })
 
     const setData = useCallback(
-        (data:D) => setState({
+        (data:D) => safeDispatch({
             data,
             stat: 'success',
             error: null
-        }),[])
+        }),[safeDispatch])
 
     const setError = useCallback(
-        (error:Error) => setState({
+        (error:Error) => safeDispatch({
             error,
             stat:'error',
             data:null
-        }),[])
+        }),[safeDispatch])
 
     const run = useCallback(
         (promise:Promise<D>,
@@ -57,11 +67,10 @@ export const useAsync = <D>(initialState?: State<D> ,initialConfig?:typeof defau
                 
             })
     
-            setState(prevState=>({...prevState,stat:'loading'}))
+            safeDispatch({stat:'loading'})
             return promise
             .then(data=>{
-                if(mountedRef.current)
-                    setData(data);
+                setData(data);
                 return data;
             })
             .catch((error) => {
@@ -70,7 +79,7 @@ export const useAsync = <D>(initialState?: State<D> ,initialConfig?:typeof defau
                 return error;
                 
             }); 
-        },[config.throwOnError,mountedRef,setData,setError])
+        },[config.throwOnError,setData,setError,safeDispatch])
 
     return{
         isIdle:state.stat === 'idle',
