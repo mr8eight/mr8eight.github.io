@@ -19,5 +19,3 @@ export const useUrlQueryParam = <K extends string>(keys:K[]) => {
         ]as const
 }
 
-// 添加一个空的 export 语句来将文件视为模块
-export {}; // 添加这一行
