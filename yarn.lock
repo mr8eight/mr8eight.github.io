@@ -2257,14 +2257,7 @@
   resolved "https://registry.npmmirror.com/@types/range-parser/-/range-parser-1.2.7.tgz"
   integrity sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==
 
-"@types/react-dom@<18.0.0":
-  version "17.0.25"
-  resolved "https://registry.npmmirror.com/@types/react-dom/-/react-dom-17.0.25.tgz"
-  integrity sha512-urx7A7UxkZQmThYA4So0NelOVjx3V4rNFVJwp0WZlbIK5eM4rNJDiN3R/E9ix0MBh6kAEojk/9YL+Te6D9zHNA==
-  dependencies:
-    "@types/react" "^17"
-
-"@types/react-dom@^16.9.8":
+"@types/react-dom@<18.0.0", "@types/react-dom@^16.9.8":
   version "16.9.24"
   resolved "https://registry.npmmirror.com/@types/react-dom/-/react-dom-16.9.24.tgz#4d193d7d011267fca842e8a10a2d738f92ec5c30"
   integrity sha512-Gcmq2JTDheyWn/1eteqyzzWKSqDjYU6KYsIvH7thb7CR5OYInAWOX+7WnKf6PaU/cbdOc4szJItcDEJO7UGmfA==
@@ -2275,15 +2268,6 @@
   version "16.14.62"
   resolved "https://registry.npmmirror.com/@types/react/-/react-16.14.62.tgz#449e4e81caaf132d0c2c390644e577702db1dd9e"
   integrity sha512-BWf7hqninZav6nerxXj+NeZT/mTpDeG6Lk2zREHAy63CrnXoOGPGtNqTFYFN/sqpSaREDP5otVV88axIXmKfGA==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "^0.16"
-    csstype "^3.0.2"
-
-"@types/react@^17":
-  version "17.0.83"
-  resolved "https://registry.npmmirror.com/@types/react/-/react-17.0.83.tgz"
-  integrity sha512-l0m4ArKJvmFtR4e8UmKrj1pB4tUgOhJITf+mADyF/p69Ts1YAR/E+G9XEM0mHXKVRa1dQNHseyyDNzeuAXfXQw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "^0.16"

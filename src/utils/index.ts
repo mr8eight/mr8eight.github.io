@@ -3,21 +3,25 @@ import { useEffect ,useRef,useState} from "react"
 export const isFalsy = (value:any) => value === 0 ? false:!value
 export const isVoid = (value:unknown) => value === undefined || value === null || value === ''
 
-export const cleanObject = (object:{[key:string]:unknown}) => {
-    const result = {...object}
-    Object.keys(result).forEach(key=>{
-        const value = object[key]
-        if(isVoid(value)){
-            delete result[key]
-        }
-    })
+export const cleanObject = (object?: { [key: string]: unknown }) => {
+    // Object.assign({}, object)
+    if (!object) {
+      return {};
+    }
+    const result = { ...object };
+    Object.keys(result).forEach((key) => {
+      const value = result[key];
+      if (isVoid(value)) {
+        delete result[key];
+      }
+    });
     return result;
-};
+  };
 
 export const useMount = (callback:()=>void) => {
     useEffect(()=>{
         callback()
-    },[])
+    },[callback])
 };
 
 export const useDebounce = <V>(value:V ,delay?:number) => {
@@ -65,10 +69,25 @@ export const useDocumentTitle = (title : string, keepOnUnmount = true) => {
     },[keepOnUnmount,oldTitle]);
 }
 
-export const resetRoute = () => window.location.href = window.location.origin
+export const resetRoute = () => (window.location.href = window.location.origin);
+
+export const subset = <
+  O extends { [key in string]: unknown },
+  K extends keyof O
+>(
+  obj: O,
+  keys: K[]
+) => {
+  const filteredEntries = Object.entries(obj).filter(([key]) =>
+    keys.includes(key as K)
+  );
+  return Object.fromEntries(filteredEntries) as Pick<O, K>;
+};
+
 
 export const useMountedRef = () => {
-    const mountedRef = useRef(false)
+    const mountedRef = useRef(false);
+
     useEffect(()=>{
         mountedRef.current = true
         return ()=>{

@@ -5,18 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { loadServer, DevTools } from 'jira-dev-tool';
 import 'antd/dist/antd.css'; // 导入样式
-import { AppProvider } from 'context';
+import { AppProviders } from 'context';
 import { BrowserRouter as Router } from 'react-router-dom'; // 导入 BrowserRouter
 
 loadServer(() =>
   ReactDOM.render(
     <React.StrictMode>
-      <Router> {/* 在这里包裹 Router */}
-        <AppProvider>
+      {/* <Router> 在这里包裹 Router */}
+        <AppProviders>
           <DevTools />
           <App />
-        </AppProvider>
-      </Router>
+        </AppProviders>
+      {/* </Router> */}
     </React.StrictMode>,
     document.getElementById('root')
   )

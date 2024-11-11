@@ -1,21 +1,21 @@
 import React from 'react';
 import { cleanObject, useDebounce, useDocumentTitle, useMount } from "../../utils"
-import { List, Project } from "./list"
-import { SearchPanel, User } from "./search-panel"
+import { List } from "./list"
+import { SearchPanel } from "./search-panel"
 import { useEffect,useState } from "react"
 import styled from '@emotion/styled';
-import { Button, Row, Typography } from 'antd';
+import { Row } from 'antd';
 import { useProjects } from 'utils/project';
 import { useUsers } from 'utils/user';
-import { useUrlQueryParam } from 'utils/url';
 import {useProjectModal, useProjectsSearchParams} from './util'
 import { ButtonNoPadding } from 'components/lib';
+import { ErrorBox } from 'components/lib';
 
 export const ProjectListScreen = () => {
 
     useDocumentTitle('项目列表',false)
     const [param,setParam] = useProjectsSearchParams()
-    const{isLoading,error,data:list, retry} = useProjects(useDebounce(param,200))
+    const {isLoading,error,data:list} = useProjects(useDebounce(param,200))
     const {data:users} = useUsers()
     const {open} = useProjectModal()
     return (
@@ -30,9 +30,8 @@ export const ProjectListScreen = () => {
             </Row>
 
             <SearchPanel users={users || []} param={param} setParam={setParam}/>
-            {error ? <Typography.Text type={"danger"}>{error.message}</Typography.Text>:null}
+            <ErrorBox error={error} />
             <List 
-                refresh={retry} 
                 loading={isLoading} 
                 users={users || []} 
                 dataSource={list || []}
