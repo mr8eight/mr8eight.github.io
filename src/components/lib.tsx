@@ -27,6 +27,7 @@ export const Row = styled.div<{
 
 const FullPage = styled.div`
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,6 +64,7 @@ export const ScreenContainer = styled.div`
   padding: 3.2rem;
   width: 100%;
   display: flex;
+  flex: 1;
   flex-direction: column;
 `;
 

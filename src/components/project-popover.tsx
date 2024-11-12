@@ -39,5 +39,5 @@ export const ProjectPopover = () => {
 };
 
 const ContentContainer = styled.div`
-  min-width: 30rem;
+  min-width: 100rem;
 `;

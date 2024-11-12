@@ -44,6 +44,8 @@ const Main = styled.div`
     box-shadow: -5px 0 -5px -5px rgba(0,0,0,0.1);
     display: flex; 
     overflow: hidden;
+    width: 100%;
+    justify-content: space-between;
 `
 
 const Container = styled.div`
