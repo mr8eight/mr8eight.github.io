@@ -88,6 +88,7 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
+  /* border: 5px solid black; */
 `;
 
 // grid-area 用来给grid子元素起名字
@@ -101,9 +102,9 @@ const HeaderLeft = styled(Row)``;
 const HeaderRight = styled.div``;
 const Main = styled.main`
   display: flex;
-  overflow: hidden;
+  overflow: scroll;
   justify-content: space-between;
   /* align-items: center; */
   width: 100%;
-  /* border: 1px solid black; 添加黑色边框 */
+  /* border: 5px solid black;  */
 `;

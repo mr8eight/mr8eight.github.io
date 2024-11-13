@@ -18,7 +18,7 @@ export const useKanbanSearchParams = () => ({projectId: useProjectIdInUrl()})
 export const useKanbansQueryKey = () => ['kanbans', useKanbanSearchParams()]
 
 export const useTasksSearchParams = () => {
-    const [param,setParam] = useUrlQueryParam([
+    const [param] = useUrlQueryParam([
         'name',
         'typeId',
         'processorId',
@@ -48,7 +48,7 @@ export const useTasksModal = () => {
 
     const close = useCallback(()=>{
         setEditingTaskId({editingTaskId: ''})
-    },[editingTaskId])
+    },[setEditingTaskId])
 
     return {
         editingTaskId,

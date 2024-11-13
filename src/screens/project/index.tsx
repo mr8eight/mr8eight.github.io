@@ -3,7 +3,6 @@ import { Link, Route, Routes, Navigate, useLocation } from "react-router-dom";
 import { KanbanScreen } from "screens/kanban";
 import { EpicScreen } from "screens/epic";
 import styled from "@emotion/styled";
-import { ScreenContainer } from "components/lib";
 import { Menu } from "antd";
 
 const useRouteType = () => {
@@ -44,8 +43,6 @@ const Main = styled.div`
     box-shadow: -5px 0 -5px -5px rgba(0,0,0,0.1);
     display: flex; 
     overflow: hidden;
-    width: 100%;
-    justify-content: space-between;
 `
 
 const Container = styled.div`

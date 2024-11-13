@@ -39,5 +39,6 @@ export const ProjectPopover = () => {
 };
 
 const ContentContainer = styled.div`
-  min-width: 100rem;
+  min-width: 30rem;
+  /* border: 5px solid black; */
 `;
