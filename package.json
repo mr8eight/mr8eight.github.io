@@ -34,7 +34,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -r git@github.com:mr8eight/mr8eight.github.io.git -b main"
   },
   "eslintConfig": {
     "extends": [
@@ -55,8 +57,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react-beautiful-dnd": "13.0.0",
     "eslint-config-prettier": "^9.1.0",
+    "gh-pages": "^6.2.0",
     "husky": "^9.1.6",
     "json-server": "^0.16.2",
     "prettier": "3.3.3"
