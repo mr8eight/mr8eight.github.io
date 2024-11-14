@@ -7,16 +7,17 @@ import { loadServer, DevTools } from 'jira-dev-tool';
 import 'antd/dist/antd.css'; // 导入样式
 import { AppProviders } from 'context';
 import { BrowserRouter as Router } from 'react-router-dom'; // 导入 BrowserRouter
+import { Profiler } from 'components/profiler';
 
 loadServer(() =>
   ReactDOM.render(
     <React.StrictMode>
-      {/* <Router> 在这里包裹 Router */}
-        <AppProviders>
-          <DevTools />
-          <App />
-        </AppProviders>
-      {/* </Router> */}
+        <Profiler id={'Root App'} phases={['mount']}>
+          <AppProviders>
+            <DevTools />
+            <App />
+          </AppProviders>
+        </Profiler>
     </React.StrictMode>,
     document.getElementById('root')
   )

@@ -8,8 +8,9 @@ import { Row } from 'antd';
 import { useProjects } from 'utils/project';
 import { useUsers } from 'utils/user';
 import {useProjectModal, useProjectsSearchParams} from './util'
-import { ButtonNoPadding } from 'components/lib';
+import { ButtonNoPadding, ScreenContainer } from 'components/lib';
 import { ErrorBox } from 'components/lib';
+import { Profiler } from 'components/profiler';
 
 export const ProjectListScreen = () => {
 
@@ -19,7 +20,8 @@ export const ProjectListScreen = () => {
     const {data:users} = useUsers()
     const {open} = useProjectModal()
     return (
-        <Container> 
+        <Profiler id={'项目列表'}>
+            <ScreenContainer> 
             <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <h1>项目列表</h1>
                     <ButtonNoPadding 
@@ -36,17 +38,18 @@ export const ProjectListScreen = () => {
                 users={users || []} 
                 dataSource={list || []}
                 />
-        </Container>
+        </ScreenContainer>
+        </Profiler>
     ) 
         
 }
 
 ProjectListScreen.whyDidYouRender = false
 
-const Container = styled.div`
-    padding:3.2rem;
-    width: 100vw;
+// const Container = styled.div`
+//     padding:3.2rem;
+//     width: 100vw;
     
-    /* border: 5px solid black; */
-`
+//     /* border: 5px solid black; */
+// `
 
