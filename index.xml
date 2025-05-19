@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>我的全新 Hugo 网站</title>
+        <link>http://mr8eight.github.io/</link>
+        <description>这是我的全新 Hugo 网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 16 May 2025 17:04:41 &#43;0800</lastBuildDate>
+            <atom:link href="http://mr8eight.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Meta</title>
+    <link>http://mr8eight.github.io/meta/</link>
+    <pubDate>Fri, 16 May 2025 17:04:41 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://mr8eight.github.io/meta/</guid>
+    <description><![CDATA[<h2 id="meta学习笔记">meta学习笔记</h2>
+<blockquote>
+<p>核心用法：name + content</p></blockquote>
+<p>meta就是网页的一些 “<em>标签</em>”</p>]]></description>
+</item>
+<item>
+    <title>First_post</title>
+    <link>http://mr8eight.github.io/first_post/</link>
+    <pubDate>Fri, 16 May 2025 11:12:10 &#43;0800</pubDate>
+    <author>xxxx</author>
+    <guid>http://mr8eight.github.io/first_post/</guid>
+    <description><![CDATA[<h2 id="这是第一条文章">这是第一条文章！！</h2>
+<p><em>上手</em></p>
+<p><strong>上手</strong></p>
+<p>Try</p>
+<p>sss</p>]]></description>
+</item>
+</channel>
+</rss>
